@@ -12,7 +12,6 @@ from feature_selection import select_features
 
 preprocess_data()
 
-# Load the preprocessed data
 train_data = pd.read_csv('data/processed/loan-train-processed.csv')
 test_data = pd.read_csv('data/processed/loan-test-processed.csv')
 
@@ -20,11 +19,9 @@ test_data = pd.read_csv('data/processed/loan-test-processed.csv')
 train_data['Dependents'].replace('3+', 3, inplace=True)
 test_data['Dependents'].replace('3+', 3, inplace=True)
 
-# Convert 'Dependents' to numeric
 train_data['Dependents'] = pd.to_numeric(train_data['Dependents'])
 test_data['Dependents'] = pd.to_numeric(test_data['Dependents'])
 
-# Prepare the data for feature selection
 X_train = train_data.drop(['Loan_Status', 'Loan_ID'], axis=1)
 y_train = train_data['Loan_Status']
 X_test = test_data.drop(['Loan_Status', 'Loan_ID'], axis=1)
